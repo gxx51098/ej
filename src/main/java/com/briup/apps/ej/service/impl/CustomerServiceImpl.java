@@ -19,4 +19,11 @@ public class CustomerServiceImpl implements ICustomerService {
         CustomerExample example = new CustomerExample();
         return customerMapper.selectByExample(example);
     }
+
+    @Override
+    public Customer findById() {
+        return null;
+    }
+
+
 }

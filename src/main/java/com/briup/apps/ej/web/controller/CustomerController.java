@@ -22,4 +22,6 @@ public class CustomerController {
         List<Customer> list = customerService.findAll();
         return MessageUtil.success("success",list);
     }
+
+
 }
