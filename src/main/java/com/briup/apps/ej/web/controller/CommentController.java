@@ -20,7 +20,7 @@ public class CommentController {
     @Autowired
     private ICommentService commentService;
 
-    @ApiOperation("查询所有")
+    @ApiOperation("查询所有评价")
     @GetMapping("findAll")
     public Message findAll(){
         List<Comment> list = commentService.findAll();
@@ -29,9 +29,35 @@ public class CommentController {
 
     @ApiOperation("通过id查询")
     @GetMapping("findById")
-    public Message findById(@ApiParam(required = true) @RequestParam(value = "id") long id){
+    public Message findById(
+            @ApiParam(required = true)
+            @RequestParam(value = "id") long id){
         Comment comment = commentService.findById(id);
         return MessageUtil.success("success",comment);
     }
 
+    @ApiOperation("保存或更新评价信息")
+    @GetMapping("saveOrUpdate")
+    public Message saveOrUpdate(Comment comment){
+        try {
+            commentService.saveOrUpdate(comment);
+            return MessageUtil.success("保存成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageUtil.error(e.getMessage());
+        }
+    }
+    @ApiOperation("通过id删除评价信息")
+    @GetMapping("deleteById")
+    public Message deleteById(
+            @ApiParam(value = "主键",required = true)
+            @RequestParam("id") long id){
+        try {
+            commentService.deleteById(id);
+            return MessageUtil.success("删除成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageUtil.error(e.getMessage());
+        }
+    }
 }
