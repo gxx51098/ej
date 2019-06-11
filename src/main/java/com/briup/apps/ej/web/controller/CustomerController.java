@@ -40,7 +40,7 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
-    @ApiOperation("保存或更新用户信息")
+    @ApiOperation("保存或更新客户信息")
     @GetMapping("saveOrUpdate")
     public String saveOrUpdate(Customer customer){
         try {
@@ -52,15 +52,18 @@ public class CustomerController {
         }
     }
 
-    @ApiOperation("通过id删除用户信息")
+    @ApiOperation("通过id删除客户信息")
     @GetMapping("deleteById")
-    public String deleteById(@ApiParam(value = "主键",required = true ) @RequestParam("id") long id){
+    public Message deleteById(
+            @ApiParam(value = "主键",required = true )
+            @RequestParam("id") long id){
         try{
             customerService.deleteById(id);
-            return "删除成功！";
+            return MessageUtil.success("删除成功！");
         }catch (Exception e){
             e.printStackTrace();
-            return e.getMessage();
+            return MessageUtil.error(e.getMessage());
+
         }
     }
 }
