@@ -25,22 +25,22 @@ public class ProductServiceImpl implements IProductService {
         ProductExample example = new ProductExample();
         ProductExample.Criteria c = example.createCriteria();
         if (product.getDescription()!=null){
-            example.createCriteria().andDescriptionLike("%"+product.getDescription()+"%");
+            c.andDescriptionLike("%"+product.getDescription()+"%");
         }
         if (product.getName()!=null){
-            example.createCriteria().andDescriptionNotLike("%"+product.getName()+"%");
+            c.andDescriptionNotLike("%"+product.getName()+"%");
         }
         if (product.getCategoryId()!=null){
-            example.createCriteria().andDescriptionNotLike("%"+product.getCategoryId()+"%");
+            c.andDescriptionNotLike("%"+product.getCategoryId()+"%");
         }
         if (product.getPhoto()!=null){
-            example.createCriteria().andDescriptionNotLike("%"+product.getPhoto()+"%");
+            c.andDescriptionNotLike("%"+product.getPhoto()+"%");
         }
         if (product.getPrice()!=null){
-            example.createCriteria().andDescriptionNotLike("%"+product.getPrice()+"%");
+            c.andDescriptionNotLike("%"+product.getPrice()+"%");
         }
         if (product.getStatus()!=null){
-            example.createCriteria().andDescriptionNotLike("%"+product.getStatus()+"%");
+            c.andDescriptionNotLike("%"+product.getStatus()+"%");
         }
         return productMapper.selectByExample(example);
     }

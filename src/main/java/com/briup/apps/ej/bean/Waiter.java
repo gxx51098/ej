@@ -120,7 +120,7 @@ public class Waiter {
      *
      * @mbg.generated Mon Jun 10 15:44:24 CST 2019
      */
-    public String getPassword() {
+    public String  getPassword() {
         return password;
     }
 
@@ -144,7 +144,7 @@ public class Waiter {
      *
      * @mbg.generated Mon Jun 10 15:44:24 CST 2019
      */
-    public String getRealname() {
+    public  String getRealname() {
         return realname;
     }
 
@@ -168,7 +168,7 @@ public class Waiter {
      *
      * @mbg.generated Mon Jun 10 15:44:24 CST 2019
      */
-    public String getIdcard() {
+    public  String getIdcard() {
         return idcard;
     }
 
@@ -192,7 +192,7 @@ public class Waiter {
      *
      * @mbg.generated Mon Jun 10 15:44:24 CST 2019
      */
-    public String getStatus() {
+    public  String getStatus() {
         return status;
     }
 
@@ -216,7 +216,7 @@ public class Waiter {
      *
      * @mbg.generated Mon Jun 10 15:44:24 CST 2019
      */
-    public String getPhoto() {
+    public  String getPhoto() {
         return photo;
     }
 

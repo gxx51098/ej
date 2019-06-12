@@ -58,9 +58,6 @@ public class CustomerServiceImpl implements ICustomerService {
             customerMapper.updateByPrimaryKey(customer);
         }
     }
-
-
-
     @Override
     public void deleteById(long id) throws Exception {
         Customer customer = customerMapper.selectByPrimaryKey(id);
