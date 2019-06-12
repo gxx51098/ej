@@ -18,7 +18,7 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
-    @ApiOperation("查询所有商品")
+    @ApiOperation("查询所有产品")
     @GetMapping("/findAll")
     public Message findAll(){
         List<Product> list = productService.findAll();
@@ -26,7 +26,7 @@ public class ProductController {
     }
 
 
-    @ApiOperation("通过id查询商品")
+    @ApiOperation("通过id查询产品")
     @GetMapping("/findById")
     public Message findById(long id){
         Product product = productService.findById(id);
@@ -40,7 +40,7 @@ public class ProductController {
         return MessageUtil.success("success",list);
     }
 
-    @ApiOperation("更新或添加商品")
+    @ApiOperation("更新或添加产品")
     @GetMapping("/saveOrUpdate")
     public Message saveOrUpdate(Product product){
         try {
@@ -52,7 +52,7 @@ public class ProductController {
         }
     }
 
-    @ApiOperation("删除商品")
+    @ApiOperation("删除产品")
     @GetMapping("/deleteById")
     public Message deleteById(long id){
         try {

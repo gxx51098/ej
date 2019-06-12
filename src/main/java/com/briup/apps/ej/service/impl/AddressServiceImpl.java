@@ -73,7 +73,7 @@ public class AddressServiceImpl implements IAddressService {
     public void deleteById(long id) throws Exception {
         Address address = addressMapper.selectByPrimaryKey(id);
         if(address == null){
-            throw new Exception("要删除的用户不存在");
+            throw new Exception("要删除的地址不存在");
         }else{
             addressMapper.deleteByPrimaryKey(id);
         }

@@ -41,7 +41,7 @@ public class OrderLineServiceImpl implements IOrderLineService {
     public void deleteById(long id) throws Exception {
         OrderLine orderLine = orderLineMapper.selectByPrimaryKey(id);
         if (orderLine == null) {
-            throw new Exception("要删除的订单不存在");
+            throw new Exception("要删除的内容不存在");
         } else {
             orderLineMapper.deleteByPrimaryKey(id);
         }

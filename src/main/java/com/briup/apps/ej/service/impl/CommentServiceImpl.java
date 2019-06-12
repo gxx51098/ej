@@ -14,6 +14,29 @@ public class CommentServiceImpl implements ICommentService {
     @Resource
     private CommentMapper commentMapper;
 
+    @Override
+    public List<Comment> query(Comment comment) {
+        // 创建空模板
+        CommentExample example = new CommentExample();
+        // 在模板中添加条件
+        if(comment.getContent()!=null){
+            example
+                    .createCriteria()
+                    .andContentLike("%"+comment.getContent()+"%");
+        }
+        if (comment.getCommentTime() != null) {
+            example
+                    .createCriteria()
+                    .andCommentTimeEqualTo(comment.getCommentTime());
+        }
+        if (comment.getOrderId() != null) {
+            example
+                    .createCriteria()
+                    .andOrderIdEqualTo(comment.getOrderId());
+        }
+        return commentMapper.selectByExample(example);
+    }
+
 
     @Override
     public List<Comment> findAll() {
@@ -39,9 +62,9 @@ public class CommentServiceImpl implements ICommentService {
 
     @Override
     public void deleteById(long id) throws Exception {
-        Comment order = commentMapper.selectByPrimaryKey(id);
-        if (order == null) {
-            throw new Exception("要删除的订单不存在");
+        Comment comment = commentMapper.selectByPrimaryKey(id);
+        if (comment == null) {
+            throw new Exception("要删除的评价不存在");
         } else {
             commentMapper.deleteByPrimaryKey(id);
         }

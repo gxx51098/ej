@@ -26,13 +26,13 @@ public class CustomerController {
     public List<Customer> query(Customer customer){
         return customerService.query(customer);
     }
-    @ApiOperation("查询所有")
+    @ApiOperation("查询所有客户")
     @GetMapping("findAll")
     public List<Customer> findAll(){
         return customerService.findAll();
     }
 
-    @ApiOperation("通过id查询")
+    @ApiOperation("通过id查询客户")
     @GetMapping("findById")
     public Customer findById(
             @ApiParam(value="主键",required = true)

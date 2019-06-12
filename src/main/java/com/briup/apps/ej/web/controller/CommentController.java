@@ -20,6 +20,11 @@ public class CommentController {
     @Autowired
     private ICommentService commentService;
 
+    @ApiOperation("模糊查询")
+    @GetMapping("query")
+    public List<Comment> query(Comment comment){
+        return commentService.query(comment);
+    }
     @ApiOperation("查询所有评价")
     @GetMapping("findAll")
     public Message findAll(){
