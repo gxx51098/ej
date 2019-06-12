@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements ICustomerService {
     public void deleteById(long id) throws Exception {
         Customer order = customerMapper.selectByPrimaryKey(id);
         if (order == null) {
-            throw new Exception("要删除的订单不存在");
+            throw new Exception("要删除的客户不存在");
         } else {
             customerMapper.deleteByPrimaryKey(id);
         }

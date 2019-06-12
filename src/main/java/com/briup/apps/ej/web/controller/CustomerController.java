@@ -32,7 +32,7 @@ public class CustomerController {
         return customerService.findAll();
     }
 
-    @ApiOperation("通过id查询")
+    @ApiOperation("通过id查询客户")
     @GetMapping("findById")
     public Customer findById(
             @ApiParam(value="主键",required = true)

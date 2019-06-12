@@ -28,7 +28,7 @@ public class AddressController {
         List<Address> list = addressService.query(address);
         return MessageUtil.success("success",list);
     }
-    @ApiOperation("查询所有")
+    @ApiOperation("查询所有地址")
     @GetMapping("/findAll")
     public Message findAll(){
         List<Address> list = addressService.findAll();
@@ -46,7 +46,7 @@ public class AddressController {
     }
 
 
-    @ApiOperation("保存或更新用户信息")
+    @ApiOperation("保存或更新地址信息")
     @GetMapping("/saveOrUpdate")
     public Message saveOrUpdate(Address address){
         try{
@@ -58,7 +58,7 @@ public class AddressController {
         }
     }
 
-    @ApiOperation("删除用户")
+    @ApiOperation("删除地址")
     @GetMapping("/deleteById")
     public Message deleteById(@ApiParam(value = "主键",required = true)@RequestParam("id") long id){
         try{

@@ -28,7 +28,7 @@ public class CategoryController {
         return MessageUtil.success("success",list);
     }
 
-    @ApiOperation("查询所有")
+    @ApiOperation("查询所有类别")
     @GetMapping("findAll")
     public Message findAll(){
         List<Category> list = categoryService.findAll();
@@ -44,7 +44,7 @@ public class CategoryController {
         return MessageUtil.success("success",category);
     }
 
-    @ApiOperation("保存或更新用户信息")
+    @ApiOperation("保存或更新分类信息")
     @GetMapping("saveOrUpdate")
     public Message saveOrUpdate(Category category){
         try {
@@ -56,7 +56,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("通过id删除用户信息")
+    @ApiOperation("通过id删除分类信息")
     @GetMapping("deleteById")
     public Message deleteById(@ApiParam(value = "主键",required = true) @RequestParam("id") long id){
         try {

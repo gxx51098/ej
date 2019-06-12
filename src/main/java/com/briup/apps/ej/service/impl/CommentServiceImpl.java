@@ -64,7 +64,7 @@ public class CommentServiceImpl implements ICommentService {
     public void deleteById(long id) throws Exception {
         Comment comment = commentMapper.selectByPrimaryKey(id);
         if (comment == null) {
-            throw new Exception("要删除的订单不存在");
+            throw new Exception("要删除的评价不存在");
         } else {
             commentMapper.deleteByPrimaryKey(id);
         }
