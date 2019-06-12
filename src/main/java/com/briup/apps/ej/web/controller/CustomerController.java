@@ -26,7 +26,7 @@ public class CustomerController {
     public List<Customer> query(Customer customer){
         return customerService.query(customer);
     }
-    @ApiOperation("查询所有")
+    @ApiOperation("查询所有客户")
     @GetMapping("findAll")
     public List<Customer> findAll(){
         return customerService.findAll();
