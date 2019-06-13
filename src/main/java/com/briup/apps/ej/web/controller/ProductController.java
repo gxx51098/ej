@@ -7,6 +7,7 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +42,7 @@ public class ProductController {
     }
 
     @ApiOperation("更新或添加产品")
-    @GetMapping("/saveOrUpdate")
+    @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(Product product){
         try {
             productService.saveOrUpdate(product);
@@ -53,7 +54,7 @@ public class ProductController {
     }
 
     @ApiOperation("删除产品")
-    @GetMapping("/deleteById")
+    @PostMapping("/deleteById")
     public Message deleteById(long id){
         try {
             productService.deleteById(id);

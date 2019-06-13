@@ -37,7 +37,7 @@ public class CustomerController {
         return MessageUtil.success("操作成功");
     }
 
-    @GetMapping("deleteById")
+    @PostMapping("deleteById")
     @ApiOperation("通过ID删除")
     public Message deleteById(@NotNull @RequestParam("id") Long id) throws Exception{
         customerService.deleteById(id);

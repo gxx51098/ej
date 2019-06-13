@@ -7,10 +7,7 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,7 +39,7 @@ public class CommentController {
     }
 
     @ApiOperation("保存或更新评价信息")
-    @GetMapping("saveOrUpdate")
+    @PostMapping("saveOrUpdate")
     public Message saveOrUpdate(Comment comment){
         try {
             commentService.saveOrUpdate(comment);
@@ -53,7 +50,7 @@ public class CommentController {
         }
     }
     @ApiOperation("通过id删除评价信息")
-    @GetMapping("deleteById")
+    @PostMapping("deleteById")
     public Message deleteById(
             @ApiParam(value = "主键",required = true)
             @RequestParam("id") long id){

@@ -8,10 +8,7 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,7 +44,7 @@ public class AddressController {
 
 
     @ApiOperation("保存或更新地址信息")
-    @GetMapping("/saveOrUpdate")
+    @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(Address address){
         try{
             addressService.saveOrUpdate(address);
@@ -59,7 +56,7 @@ public class AddressController {
     }
 
     @ApiOperation("删除地址")
-    @GetMapping("/deleteById")
+    @PostMapping("/deleteById")
     public Message deleteById(@ApiParam(value = "主键",required = true)@RequestParam("id") long id){
         try{
             addressService.deleteById(id);
