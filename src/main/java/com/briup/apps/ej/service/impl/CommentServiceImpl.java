@@ -15,13 +15,59 @@ public class CommentServiceImpl implements ICommentService {
     private CommentMapper commentMapper;
 
     @Override
-    public List<Comment> findAll(){
+    public List<Comment> query(Comment comment) {
+        // 创建空模板
+        CommentExample example = new CommentExample();
+        // 在模板中添加条件
+        if(comment.getContent()!=null){
+            example
+                    .createCriteria()
+                    .andContentLike("%"+comment.getContent()+"%");
+        }
+        if (comment.getCommentTime() != null) {
+            example
+                    .createCriteria()
+                    .andCommentTimeEqualTo(comment.getCommentTime());
+        }
+        if (comment.getOrderId() != null) {
+            example
+                    .createCriteria()
+                    .andOrderIdEqualTo(comment.getOrderId());
+        }
+        return commentMapper.selectByExample(example);
+    }
+
+
+    @Override
+    public List<Comment> findAll() {
         CommentExample example = new CommentExample();
         return commentMapper.selectByExample(example);
     }
 
+
     @Override
-    public Comment findById(long id){
+    public Comment findById(long id) {
         return commentMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public void saveOrUpdate(Comment comment) throws Exception {
+        if (comment.getId() == null) {
+            // 初始化属性
+            commentMapper.insert(comment);
+        } else {
+            commentMapper.updateByPrimaryKey(comment);
+        }
+    }
+
+    @Override
+    public void deleteById(long id) throws Exception {
+        Comment comment = commentMapper.selectByPrimaryKey(id);
+        if (comment == null) {
+            throw new Exception("要删除的评价不存在");
+        } else {
+            commentMapper.deleteByPrimaryKey(id);
+        }
+    }
+
 }
