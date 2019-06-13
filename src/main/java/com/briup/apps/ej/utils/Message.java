@@ -3,7 +3,7 @@ package com.briup.apps.ej.utils;
 public class Message {
     private Integer status;
     private String message;
-    private Object date;
+    private Object data;
     private Long timestamp;
 
     public Integer getStatus() {
@@ -22,12 +22,12 @@ public class Message {
         this.message = message;
     }
 
-    public Object getDate() {
-        return date;
+    public Object getData() {
+        return data;
     }
 
-    public void setDate(Object date) {
-        this.date = date;
+    public void setData(Object data) {
+        this.data = data;
     }
 
     public Long getTimestamp() {
