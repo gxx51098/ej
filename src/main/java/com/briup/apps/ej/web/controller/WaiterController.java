@@ -1,5 +1,4 @@
 package com.briup.apps.ej.web.controller;
-
 import com.briup.apps.ej.bean.Waiter;
 import com.briup.apps.ej.service.IWaiterService;
 import com.briup.apps.ej.utils.Message;

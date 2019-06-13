@@ -42,13 +42,14 @@ public class WaiterServiceImpl implements IWaiterService{
 
     @Override
     public List<Waiter> findAll() {
-        return null;
+        WaiterExample example=new WaiterExample();
+        return waiterMapper.selectByExample(example);
+        //return null;
     }
 
     @Override
     public Waiter findById(long id) {
-        WaiterMapper waitertMapper = null;
-        return waitertMapper.selectByPrimaryKey(id);
+        return waiterMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -56,7 +57,8 @@ public class WaiterServiceImpl implements IWaiterService{
         if (waiter.getId()==null){
             waiterMapper.insert(waiter);
         }else {
-            waiterMapper.updateByPrimaryKey(waiter);
+            waiterMapper.updateByPrimaryKeySelective(waiter);
+                    //.updateByPrimaryKey(waiter);
         }
 
     }
@@ -65,7 +67,7 @@ public class WaiterServiceImpl implements IWaiterService{
     public void deleteById(long id) throws Exception{
         Waiter waiter = waiterMapper.selectByPrimaryKey(id);
         if (waiter.getId()==null){
-            throw new Exception("该商品不存在！");
+            throw new Exception("该waiter不存在！");
         }else {
             waiterMapper.deleteByPrimaryKey(id);
         }
