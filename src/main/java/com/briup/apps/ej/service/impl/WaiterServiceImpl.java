@@ -57,8 +57,8 @@ public class WaiterServiceImpl implements IWaiterService{
         if (waiter.getId()==null){
             waiterMapper.insert(waiter);
         }else {
-            waiterMapper.updateByPrimaryKeySelective(waiter);
-                    //.updateByPrimaryKey(waiter);
+            //waiterMapper.updateByPrimaryKeySelective(waiter);
+                    waiterMapper.updateByPrimaryKey(waiter);
         }
 
     }
