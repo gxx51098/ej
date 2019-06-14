@@ -4,13 +4,14 @@ import com.briup.apps.ej.bean.Comment;
 import com.briup.apps.ej.service.ICommentService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Api(description = "评论管理相关接口")
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
