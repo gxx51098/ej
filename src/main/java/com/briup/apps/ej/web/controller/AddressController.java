@@ -5,13 +5,14 @@ import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.service.IAddressService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Api(description = "地址管理相关接口")
 @RestController
 @RequestMapping("/address")
 public class AddressController {
