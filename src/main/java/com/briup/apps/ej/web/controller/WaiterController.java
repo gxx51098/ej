@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Api(description = "工人管理相关接口")
 @RestController
-@RequestMapping
+@RequestMapping("/waiter")
 public class WaiterController {
     @Autowired
     private IWaiterService waiterService;
