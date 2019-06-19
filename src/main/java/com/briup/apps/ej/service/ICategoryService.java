@@ -9,8 +9,15 @@ public interface ICategoryService {
     List<Category> query(Category category);
     List<Category> findAll();
     Category findById(long id);
+
+    //ICategoryService(Category) findAllParentCategory
+
+
+    List<Category>findAllparentCategory();
+
     void saveOrUpdate(Category category) throws Exception ;
     void deleteById(long id) throws Exception ;
+
 
 
 }

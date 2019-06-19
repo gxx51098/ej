@@ -43,13 +43,17 @@ public class CategoryServiceImpl implements ICategoryService {
         CategoryExample example = new CategoryExample();
         return categoryMapper.selectByExample(example);
     }
-
+    @Override
+    public List<Category>findAllparentCategory(){
+        CategoryExample example = new CategoryExample();
+        example.createCriteria().andIdIsNotNull();
+        return categoryMapper.selectByExample(example);
+    }
     @Override
     public Category findById(long id) {
         return categoryMapper.selectByPrimaryKey(id);
 
     }
-
     @Override
     public void saveOrUpdate(Category category) throws Exception {
         if(category.getId() == null){
