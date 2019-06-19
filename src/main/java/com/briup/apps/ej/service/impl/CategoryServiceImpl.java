@@ -46,7 +46,7 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public List<Category>findAllparentCategory(){
         CategoryExample example = new CategoryExample();
-        example.createCriteria().andIdIsNotNull();
+        example.createCriteria().andParentIdIsNull();
         return categoryMapper.selectByExample(example);
     }
     @Override

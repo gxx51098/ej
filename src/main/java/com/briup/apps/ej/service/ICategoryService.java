@@ -13,7 +13,7 @@ public interface ICategoryService {
     //ICategoryService(Category) findAllParentCategory
 
 
-    List<Category>findAllparentCategory();
+    List<Category> findAllparentCategory();
 
     void saveOrUpdate(Category category) throws Exception ;
     void deleteById(long id) throws Exception ;
