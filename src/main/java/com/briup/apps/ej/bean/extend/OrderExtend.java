@@ -1,10 +1,14 @@
 package com.briup.apps.ej.bean.extend;
 
 import com.briup.apps.ej.bean.*;
-import jdk.nashorn.internal.objects.annotations.Setter;
 
 import java.util.List;
 
+/**
+ * @Author: Li
+ * @Date: 2019/6/13 15:05
+ * @Description:
+ */
 public class OrderExtend extends Order {
     private Customer customer;
     private Waiter waiter;

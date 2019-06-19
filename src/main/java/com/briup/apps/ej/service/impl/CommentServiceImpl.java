@@ -15,6 +15,17 @@ public class CommentServiceImpl implements ICommentService {
     private CommentMapper commentMapper;
 
     @Override
+    public Comment findById(long id) {
+        return commentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Comment> findAll() {
+        CommentExample example = new CommentExample();
+        return commentMapper.selectByExample(example);
+    }
+
+    @Override
     public List<Comment> query(Comment comment) {
         // 创建空模板
         CommentExample example = new CommentExample();
@@ -38,17 +49,8 @@ public class CommentServiceImpl implements ICommentService {
     }
 
 
-    @Override
-    public List<Comment> findAll() {
-        CommentExample example = new CommentExample();
-        return commentMapper.selectByExample(example);
-    }
 
 
-    @Override
-    public Comment findById(long id) {
-        return commentMapper.selectByPrimaryKey(id);
-    }
 
     @Override
     public void saveOrUpdate(Comment comment) throws Exception {

@@ -1,10 +1,9 @@
 package com.briup.apps.ej.utils;
 
-public class Message {
+public class Message<T>{
     private Integer status;
-    private String message;
-    private Object data;
-    private Long timestamp;
+    private  String message;
+    private  T data;
 
     public Integer getStatus() {
         return status;
@@ -26,7 +25,7 @@ public class Message {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -37,4 +36,6 @@ public class Message {
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
+
+    private  Long timestamp;
 }

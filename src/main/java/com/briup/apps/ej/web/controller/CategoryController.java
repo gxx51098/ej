@@ -19,26 +19,6 @@ public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
 
-    @ApiOperation("模糊查询")
-    @GetMapping("query")
-    public Message query(Category category){
-        List<Category> list = categoryService.query(category);
-        return MessageUtil.success("success",list);
-    }
-
-    @ApiOperation("查询所有类别")
-    @GetMapping("findAll")
-    public Message findAll(){
-        List<Category> list = categoryService.findAll();
-        return MessageUtil.success("success",list);
-    }
-//返回所有的父级分类信息
-    @ApiOperation("查询所有父级分类信息")
-    @GetMapping("findAllparentCategory")
-    public Message findAllparentCategory(){
-        List<Category> list = categoryService.findAllparentCategory();
-        return MessageUtil.success("所有父级分类信息",list);
-    }
     @ApiOperation("通过id查询")
     @GetMapping("findById")
     public Message findById(
@@ -46,6 +26,29 @@ public class CategoryController {
             @RequestParam(value = "id") long id){
         Category category = categoryService.findById(id);
         return MessageUtil.success("success",category);
+    }
+
+    @ApiOperation("查询所有类别信息")
+    @GetMapping("findAll")
+    public Message findAll(){
+        List<Category> list = categoryService.findAll();
+        return MessageUtil.success("success",list);
+    }
+
+    @ApiOperation("模糊查询")
+    @GetMapping("query")
+    public Message query(Category category){
+        List<Category> list = categoryService.query(category);
+        return MessageUtil.success("success",list);
+    }
+
+
+//返回所有的父级分类信息
+    @ApiOperation("查询所有父级分类信息")
+    @GetMapping("findAllparentCategory")
+    public Message findAllparentCategory(){
+        List<Category> list = categoryService.findAllparentCategory();
+        return MessageUtil.success("所有父级分类信息",list);
     }
 
     @ApiOperation("保存或更新分类信息")

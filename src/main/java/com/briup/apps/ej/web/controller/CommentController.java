@@ -18,6 +18,16 @@ public class CommentController {
     @Autowired
     private ICommentService commentService;
 
+
+    @ApiOperation("通过id查询")
+    @GetMapping("findById")
+    public Message findById(
+            @ApiParam(required = true)
+            @RequestParam(value = "id") long id){
+        Comment comment = commentService.findById(id);
+        return MessageUtil.success("success",comment);
+    }
+
     @ApiOperation("模糊查询")
     @GetMapping("query")
     public List<Comment> query(Comment comment){
@@ -30,14 +40,6 @@ public class CommentController {
         return MessageUtil.success("success",list);
     }
 
-    @ApiOperation("通过id查询")
-    @GetMapping("findById")
-    public Message findById(
-            @ApiParam(required = true)
-            @RequestParam(value = "id") long id){
-        Comment comment = commentService.findById(id);
-        return MessageUtil.success("success",comment);
-    }
 
     @ApiOperation("保存或更新评价信息")
     @PostMapping("saveOrUpdate")

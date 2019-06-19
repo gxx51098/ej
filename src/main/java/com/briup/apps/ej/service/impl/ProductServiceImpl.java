@@ -15,6 +15,12 @@ public class ProductServiceImpl implements IProductService {
     private ProductMapper productMapper;
 
     @Override
+    public Product findById(long id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+
+
+    @Override
     public List<Product> findAll() {
         ProductExample example = new ProductExample();
         return productMapper.selectByExample(example);
@@ -45,10 +51,6 @@ public class ProductServiceImpl implements IProductService {
         return productMapper.selectByExample(example);
     }
 
-    @Override
-    public Product findById(long id) {
-        return productMapper.selectByPrimaryKey(id);
-    }
 
     @Override
     public void saveOrUpdate(Product product) throws Exception{

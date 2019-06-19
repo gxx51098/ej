@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.ej.dao.extend.ProductExtendMapper">
+  <select id="query" resultMap="productExtendMapper">
+        select
+        p.id as p_id,
+        p.name,
+        p.description,
+        p.price,
+        p.status,
+        p.photo,
+        p.category_id,
+        c.id as c_id,
+        c.name as c_name,
+        c.num,
+        c.parent_id
+        from ej_product p right  join ej_category c
+         on p.category_id=c.id and c.id = #{categoryId}
+    </select>
+
+
+  <resultMap id="productExtendMapper" type="com.briup.apps.ej.bean.extend.ProductExtend">
+      <!--基本映射-->
+      <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+<!--关联映射-->
+    <association property="category" javaType="com.briup.apps.ej.bean.Category">
+      <id column="c_id" property="id"/>
+      <result column="c_name" property="name"/>
+      <result column="num" property="num"/>
+      <result column="parent_id" property="parentId"/>
+    </association>
+  </resultMap>
+
+</mapper>

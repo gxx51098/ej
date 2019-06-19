@@ -4,12 +4,22 @@ import com.briup.apps.ej.bean.OrderLine;
 
 import java.util.List;
 
+
 public interface IOrderLineService {
-    List<OrderLine> findAll();
 
-    OrderLine findById(long id);
+    //根据id查询
+    OrderLine findOrderLineById(long id);
+    //查询所有
+    List<OrderLine> findAllOrderLine();
+    //模糊查询
+    List<OrderLine> query(OrderLine orderLine);
 
-    void saveOrUpdate(OrderLine orderLine) throws Exception ;
-
-    void deleteById(long id) throws Exception ;
+    //新增订单项
+    void insertOrderLine(OrderLine orderLine)throws Exception;
+    //修改订单项
+    void updateOrderLinePrimaryKey(OrderLine orderLine)throws Exception;
+    //根据id删除
+    void deleteOrderLineById(long id) throws Exception ;
+    //批量删除
+    void batchDeleteOrderLine(long ids[]) throws Exception ;
 }

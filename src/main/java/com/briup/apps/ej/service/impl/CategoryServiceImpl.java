@@ -17,6 +17,17 @@ public class CategoryServiceImpl implements ICategoryService {
     private CategoryMapper categoryMapper;
 
     @Override
+    public Category findById(long id) {
+        return categoryMapper.selectByPrimaryKey(id);
+
+    }
+    @Override
+    public List<Category> findAll() {
+        CategoryExample example = new CategoryExample();
+        return categoryMapper.selectByExample(example);
+    }
+
+    @Override
     public List<Category> query(Category category) {
         // 创建空模板
         CategoryExample example = new CategoryExample();
@@ -39,21 +50,12 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public List<Category> findAll() {
-        CategoryExample example = new CategoryExample();
-        return categoryMapper.selectByExample(example);
-    }
-    @Override
     public List<Category>findAllparentCategory(){
         CategoryExample example = new CategoryExample();
         example.createCriteria().andParentIdIsNull();
         return categoryMapper.selectByExample(example);
     }
-    @Override
-    public Category findById(long id) {
-        return categoryMapper.selectByPrimaryKey(id);
 
-    }
     @Override
     public void saveOrUpdate(Category category) throws Exception {
         if(category.getId() == null){

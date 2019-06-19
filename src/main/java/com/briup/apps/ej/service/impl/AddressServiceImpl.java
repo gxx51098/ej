@@ -1,80 +1,74 @@
 package com.briup.apps.ej.service.impl;
 
-
 import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.AddressExample;
+import com.briup.apps.ej.bean.extend.AddressExtend;
 import com.briup.apps.ej.dao.AddressMapper;
+import com.briup.apps.ej.dao.extend.AddressExtendMapper;
 import com.briup.apps.ej.service.IAddressService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+
 @Service
 public class AddressServiceImpl implements IAddressService {
-    // 自动注入mapper实例
     @Resource
     private AddressMapper addressMapper;
+    @Resource
+    private AddressExtendMapper addressExtendMapper;
 
     @Override
-    public List<Address> query(Address address) {
-        // 创建空模板
-        AddressExample example = new AddressExample();
-        // 在模板中添加条件
-        if (address.getProvince() != null) {
-            example
-                    .createCriteria()
-                    .andProvinceLike("%" + address.getAddress() + "%");
-        }
-        if (address.getCity() != null) {
-            example
-                    .createCriteria()
-                    .andCityLike("%"+address.getCity()+"%");
-        }
-        if (address.getArea() != null) {
-            example
-                    .createCriteria()
-                    .andAreaEqualTo("%"+address.getArea()+"%");
-        }
-        if (address.getTelephone() != null) {
-            example
-                    .createCriteria()
-                    .andTelephoneEqualTo("%"+address.getTelephone()+"%");
-        }
-        if (address.getCustomerId() != null) {
-            example.createCriteria().andCityLike("%"+address.getCustomerId()+"%");
-        }
-        return addressMapper.selectByExample(example);
-    }
-
-    @Override
-    public List<Address> findAll() {
-        AddressExample example = new AddressExample();
-        return addressMapper.selectByExample(example);
-    }
-
-    @Override
-    public Address findById(long id) {
+    public Address findAddressById(long id) {
+        //调用dao层代码完成操作
         return addressMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public void saveOrUpdate(Address address) throws Exception {
-        if (address.getId()==null){
+    public List<Address> findAllAddress() {
+        AddressExample example=new AddressExample();
+        return addressMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<AddressExtend> query(Long customerId) {
+        return addressExtendMapper.query(customerId);
+    }
+
+    @Override
+    public void insertAddress(Address address) throws Exception {
+        Address address1=addressMapper.selectByPrimaryKey(address.getId());
+        if(address1==null){
             addressMapper.insert(address);
-        }else {
-            addressMapper.updateByPrimaryKey(address);
+        }else{
+            throw new Exception("id已存在");
+        }
+
+    }
+
+    @Override
+    public void updateAddressByPrimaryKey(Address address) throws Exception {
+        Address category1=addressMapper.selectByPrimaryKey(address.getId());
+        if(category1==null){
+            throw new Exception("要修改的地址不存在！");
+        }else{
+            addressMapper.updateByPrimaryKeySelective(address);
+        }
+    }
+    @Override
+    public void deleteAddressById(long id) throws Exception {
+        Address customer=addressMapper.selectByPrimaryKey(id);
+        if(customer==null){
+            throw  new Exception("要删除地址不存在");
+        }else{
+            addressMapper.deleteByPrimaryKey(id);
         }
     }
 
-
-
     @Override
-    public void deleteById(long id) throws Exception {
-        Address address = addressMapper.selectByPrimaryKey(id);
-        if(address == null){
-            throw new Exception("要删除的地址不存在");
-        }else{
+    public void batchDeleteAddress(long[] ids) throws Exception {
+        for(long id :ids){
             addressMapper.deleteByPrimaryKey(id);
         }
     }

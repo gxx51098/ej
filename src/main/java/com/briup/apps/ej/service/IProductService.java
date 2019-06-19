@@ -6,11 +6,12 @@ import com.briup.apps.ej.bean.Product;
 import java.util.List;
 
 public interface IProductService {
+
+    Product findById(long id);
     List<Product> findAll();
 
     List<Product> query(Product product);
 
-    Product findById(long id);
 
     void saveOrUpdate(Product product)throws Exception;
 

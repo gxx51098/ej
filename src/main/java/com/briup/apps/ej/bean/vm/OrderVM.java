@@ -1,9 +1,11 @@
 package com.briup.apps.ej.bean.vm;
 
 /**
- * 数据模型
- * 订单在前端显示的时候需要的数据模型
- * */
+ * @Author: Li
+ * @Date: 2019/6/13 16:17
+ * @Description: 数据模型
+ *   订单在前端显示的时候需要的数据模型
+ */
 public class OrderVM {
     private Long orderId;
     private String customerName;

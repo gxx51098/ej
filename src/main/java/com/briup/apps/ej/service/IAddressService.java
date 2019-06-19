@@ -1,17 +1,33 @@
 package com.briup.apps.ej.service;
 
 import com.briup.apps.ej.bean.Address;
+import com.briup.apps.ej.bean.extend.AddressExtend;
 
 import java.util.List;
 
+/***
+ * 地址接口
+ */
 public interface IAddressService {
-    List<Address> query(Address address);
+    //关联查询
+    List<AddressExtend> query(Long customerId);
+    //List<AddressExtend> queryBasic(Long customerId);
 
-    List<Address> findAll();
+    //根据id查询地址
+    Address findAddressById(long id);
 
-    Address findById(long id);
+    //查看所有地址
+    List<Address> findAllAddress();
 
-    void saveOrUpdate(Address address) throws Exception;
 
-    void deleteById(long id) throws Exception;
+
+    //插入新的分类
+    void insertAddress(Address address)throws Exception;
+    //修改分类
+    void updateAddressByPrimaryKey(Address address)throws Exception;
+
+    //根据id删除地址
+    void deleteAddressById(long id) throws Exception;
+    //批量删除
+    void batchDeleteAddress(long[] ids) throws Exception;
 }

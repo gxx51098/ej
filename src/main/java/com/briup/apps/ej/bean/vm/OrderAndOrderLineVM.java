@@ -1,14 +1,19 @@
 package com.briup.apps.ej.bean.vm;
 
+/**
+ * @Author: Li
+ * @Date: 2019/6/13 20:47
+ * @Description:
+ */
 import com.briup.apps.ej.bean.OrderLine;
 import io.swagger.annotations.ApiParam;
 
 import java.util.List;
 
 public class OrderAndOrderLineVM {
-    @ApiParam(value = "顾客ID",required = true)
+    @ApiParam(value = "顾客id",required = true)
     private Long customerId;
-    @ApiParam(value = "服务地址ID",required = true)
+    @ApiParam(value = "服务地址id",required = true)
     private Long addressId;
     private List<OrderLine> orderLines;
 
